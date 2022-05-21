@@ -5,14 +5,14 @@
     <vendor>shindonghwi</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+    <depends>org.jetbrains.kotlin</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.androidstudio</depends>
 
-    <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.shindonghwi.wolfkotlinplugins.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.shindonghwi.wolfkotlinplugins.services.MyProjectService"/>
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="com.github.shindonghwi.wolf_template.WizardTemplateProviderImpl" />
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.shindonghwi.wolfkotlinplugins.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
