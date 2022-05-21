@@ -22,6 +22,8 @@ version = properties("pluginVersion")
 // Configure project's dependencies
 repositories {
     mavenCentral()
+    gradlePluginPortal()
+    google()
 }
 
 // Configure Gradle IntelliJ Plugin - read more: https://github.com/JetBrains/gradle-intellij-plugin
@@ -117,7 +119,7 @@ tasks {
     }
 
     instrumentCode {
-        compilerVersion.set("AI-212.5712.43.2112.8512546") //현재 사용중인 Android Studio Version
+        compilerVersion.set("212.5712.43") //현재 사용중인 Android Studio Version
     }
 
 }
