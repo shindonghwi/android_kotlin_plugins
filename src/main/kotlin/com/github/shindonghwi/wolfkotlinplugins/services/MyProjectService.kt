@@ -1,7 +1,7 @@
-package org.jetbrains.plugins.template.services
+package com.github.shindonghwi.wolfkotlinplugins.services
 
 import com.intellij.openapi.project.Project
-import org.jetbrains.plugins.template.MyBundle
+import com.github.shindonghwi.wolfkotlinplugins.MyBundle
 
 class MyProjectService(project: Project) {
 
