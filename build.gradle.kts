@@ -115,4 +115,9 @@ tasks {
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
         channels.set(listOf(properties("pluginVersion").split('-').getOrElse(1) { "default" }.split('.').first()))
     }
+
+    instrumentCode {
+        compilerVersion.set("AI-212.5712.43.2112.8512546") //현재 사용중인 Android Studio Version
+    }
+
 }
