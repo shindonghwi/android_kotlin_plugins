@@ -1,4 +1,4 @@
-package com.github.shindonghwi.wolf_template
+package com.github.shindonghwi.wolf_template.mvvm
 
 import android.databinding.tool.ext.toCamelCase
 import com.android.tools.idea.wizard.template.ProjectTemplateData

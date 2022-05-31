@@ -1,4 +1,4 @@
-package com.github.shindonghwi.wolf_template
+package com.github.shindonghwi.wolf_template.mvvm
 
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
@@ -27,9 +27,11 @@ fun RecipeExecutor.mvvmSetup(
         someFragment(date, defaultPackage, newFilePackage, entityName, layoutName, projectData),
         srcKotlinDir.resolve("${entityName}Fragment.kt")
     )
-    save(someFragmentViewModel(date, defaultPackage, newFilePackage, entityName, layoutName, projectData),
+    save(
+        someFragmentViewModel(date, defaultPackage, newFilePackage, entityName, layoutName, projectData),
         srcKotlinDir.resolve("${entityName}ViewModel.kt"))
-    save(someFragmentLayout(defaultPackage, newFilePackage, entityName),
+    save(
+        someFragmentLayout(defaultPackage, newFilePackage, entityName),
         resOut.resolve("layout/$layoutName.xml")
     )
 //    save(

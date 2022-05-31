@@ -1,4 +1,4 @@
-package com.github.shindonghwi.wolf_template
+package com.github.shindonghwi.wolf_template.mvvm
 
 
 import com.android.tools.idea.wizard.template.*
