@@ -5,7 +5,7 @@ package com.github.shindonghwi.wolf_template.compose_bottomnavigation
 import com.android.tools.idea.wizard.template.*
 import com.github.shindonghwi.wolf_template.mvvm.mvvmSetup
 
-private const val MIN_SDK = 16
+private const val MIN_SDK = 21
 
 val composeBottomNavigationWizardTemplate
     get() = template {
