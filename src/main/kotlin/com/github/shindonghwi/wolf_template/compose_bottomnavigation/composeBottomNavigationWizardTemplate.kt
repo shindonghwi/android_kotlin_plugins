@@ -9,7 +9,7 @@ private const val MIN_SDK = 16
 
 val composeBottomNavigationWizardTemplate
     get() = template {
-        name = "Android MVVM Creator (DTK2)"
+        name = "[Wolf] Compose Bottom Navigation"
         description = "Creates a new Fragment/ViewModel with layout file."
         minApi = MIN_SDK
         category = Category.Other // Check other categories
