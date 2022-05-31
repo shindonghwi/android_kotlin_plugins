@@ -22,7 +22,7 @@ val composeBottomNavigationWizardTemplate
         /** 바텀 네비게이션 전환을 위한 액티비티 */
         val activityName = stringParameter {
             name = "Activity Name"
-            default = "WolfBottomNavActivity"
+            default = "WolfComposeBottomNavigationActivity"
             help = "Activity for bottom navigation movement"
             constraints = listOf(Constraint.NONEMPTY)
         }
