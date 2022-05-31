@@ -1,21 +1,20 @@
 package com.github.shindonghwi.wolf_template.compose_bottomnavigation
 
 
-
 import com.android.tools.idea.wizard.template.*
 import com.github.shindonghwi.wolf_template.mvvm.mvvmSetup
 
-private const val MIN_SDK = 21
-
 val composeBottomNavigationWizardTemplate
     get() = template {
-        name = "[Wolf] Compose Bottom Navigation"
-        description = "Screen movement is implemented Bottom navigation"
-        minApi = MIN_SDK
-        category = Category.Other // Check other categories
-        formFactor = FormFactor.Mobile
-        screens = listOf(WizardUiContext.FragmentGallery, WizardUiContext.MenuEntry,
-            WizardUiContext.NewProject, WizardUiContext.NewModule)
+        name = "[Wolf] Compose Bottom Navigation" // 사용자에게 노출될 템플릿명
+        description = "Screen movement is implemented Bottom navigation" // 템플릿 설명
+        minApi = 21 // 템플릿을 사용 할 수 있는 최소 api 버전
+        category = Category.Compose // 컴포즈 카테고리로 지정
+        formFactor = FormFactor.Mobile // 템플릿이 사용될 폼 팩터 지정
+        screens = listOf(
+            WizardUiContext.ActivityGallery, WizardUiContext.MenuEntry,
+            WizardUiContext.NewProject, WizardUiContext.NewModule
+        )
 
         val packageNameParam = defaultPackageNameParameter
         val pathNameParam = pathNameParameter
@@ -52,18 +51,20 @@ val composeBottomNavigationWizardTemplate
         }
     }
 
-val defaultPackageNameParameter get() = stringParameter {
-    name = "Default Package"
-    visible = { !isNewModule }
-    default = "com.mycompany.myapp"
-    constraints = listOf(Constraint.PACKAGE)
-    suggest = { packageName }
-}
+val defaultPackageNameParameter
+    get() = stringParameter {
+        name = "Default Package"
+        visible = { !isNewModule }
+        default = "com.mycompany.myapp"
+        constraints = listOf(Constraint.PACKAGE)
+        suggest = { packageName }
+    }
 
-val pathNameParameter get() = stringParameter {
-    name = "New File Location"
-    visible = { !isNewModule }
-    default = "com.mycompany.myapp.presentation"
-    constraints = listOf(Constraint.PACKAGE)
-    suggest = { "$packageName.presentation" }
-}
+val pathNameParameter
+    get() = stringParameter {
+        name = "New File Location"
+        visible = { !isNewModule }
+        default = "com.mycompany.myapp.presentation"
+        constraints = listOf(Constraint.PACKAGE)
+        suggest = { "$packageName.presentation" }
+    }
