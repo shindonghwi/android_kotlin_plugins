@@ -15,4 +15,8 @@
         <wizardTemplateProvider implementation="com.github.shindonghwi.wolf_template.mvvm.WizardTemplateProviderImpl" />
     </extensions>
 
+    <extensions defaultExtensionNs="com.android.tools.idea.wizard.template">
+        <wizardTemplateProvider implementation="com.github.shindonghwi.wolf_template.compose_bottomnavigation.ComposeBottomNavigationProviderImpl" />
+    </extensions>
+
 </idea-plugin>
