@@ -27,6 +27,14 @@ val composeBottomNavigationWizardTemplate
             constraints = listOf(Constraint.NONEMPTY)
         }
 
+        /** 바텀 네비게이션 메뉴 셋팅 */
+        val bottomMenuTabList = stringParameter {
+            name = "BottomNavigation Item List [ Categorized by commas ] / ex) home,news,market,account"
+            default = "home,news,market,account"
+            help = "Set the bottom navigation menu"
+            constraints = listOf(Constraint.NONEMPTY)
+        }
+
         val layoutName = stringParameter {
             name = "Layout Name"
             default = ""
@@ -38,6 +46,7 @@ val composeBottomNavigationWizardTemplate
         widgets(
             TextFieldWidget(packageNameParam),
             TextFieldWidget(activityName),
+            TextFieldWidget(bottomMenuTabList),
             TextFieldWidget(layoutName),
             PackageNameWidget(pathNameParam)
         )
