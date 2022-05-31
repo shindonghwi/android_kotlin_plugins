@@ -16,12 +16,14 @@ val composeBottomNavigationWizardTemplate
             WizardUiContext.NewProject, WizardUiContext.NewModule
         )
 
-        val packageNameParam = defaultPackageNameParameter
-        val pathNameParam = pathNameParameter
-        val entityName = stringParameter {
-            name = "Entity Name"
-            default = ""
-            help = "The name of the entity class to create and use in Fragment"
+        val packageNameParam = defaultPackageNameParameter // 템플릿 생성시 패키지 Default 옵션 설정
+        val pathNameParam = pathNameParameter // 템플릿 생성시 파일경로 옵션 설정
+
+        /** 바텀 네비게이션 전환을 위한 액티비티 */
+        val activityName = stringParameter {
+            name = "Activity Name"
+            default = "WolfBottomNavActivity"
+            help = "Activity for bottom navigation movement"
             constraints = listOf(Constraint.NONEMPTY)
         }
 
@@ -30,12 +32,12 @@ val composeBottomNavigationWizardTemplate
             default = ""
             help = "The name of the layout to create for the fragment"
             constraints = listOf(Constraint.LAYOUT, Constraint.UNIQUE, Constraint.NONEMPTY)
-            suggest = { "${fragmentToLayout(entityName.value.toLowerCase())}" }
+            suggest = { "${fragmentToLayout(activityName.value.toLowerCase())}" }
         }
 
         widgets(
             TextFieldWidget(packageNameParam),
-            TextFieldWidget(entityName),
+            TextFieldWidget(activityName),
             TextFieldWidget(layoutName),
             PackageNameWidget(pathNameParam)
         )
@@ -45,7 +47,7 @@ val composeBottomNavigationWizardTemplate
                 data as ModuleTemplateData,
                 packageNameParam.value,
                 pathNameParam.value,
-                entityName.value,
+                activityName.value,
                 layoutName.value
             )
         }
