@@ -51,20 +51,22 @@ val composeBottomNavigationWizardTemplate
         }
     }
 
+/** 패키지명 기본 옵션 설정 */
 val defaultPackageNameParameter
     get() = stringParameter {
         name = "Default Package"
         visible = { !isNewModule }
-        default = "com.mycompany.myapp"
+        default = "com.wolf.compose"
         constraints = listOf(Constraint.PACKAGE)
         suggest = { packageName }
     }
 
+/** 파일 Path 기본 옵션 설정 */
 val pathNameParameter
     get() = stringParameter {
         name = "New File Location"
         visible = { !isNewModule }
-        default = "com.mycompany.myapp.presentation"
+        default = "com.wolf.compose.presentation"
         constraints = listOf(Constraint.PACKAGE)
         suggest = { "$packageName.presentation" }
     }
