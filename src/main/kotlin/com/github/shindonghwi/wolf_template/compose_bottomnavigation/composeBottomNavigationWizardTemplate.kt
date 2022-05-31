@@ -10,7 +10,7 @@ private const val MIN_SDK = 16
 val composeBottomNavigationWizardTemplate
     get() = template {
         name = "[Wolf] Compose Bottom Navigation"
-        description = "Creates a new Fragment/ViewModel with layout file."
+        description = "Screen movement is implemented Bottom navigation"
         minApi = MIN_SDK
         category = Category.Other // Check other categories
         formFactor = FormFactor.Mobile
