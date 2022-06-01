@@ -7,7 +7,8 @@ fun composeActivity(
     defaultPackage: String,
     activityName: String,
     moduleData: ModuleTemplateData
-) = """package $defaultPackage
+) = """
+package $defaultPackage
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
