@@ -25,9 +25,13 @@ fun RecipeExecutor.composeBottomNavigationSetup(
     val path = srcOut.absolutePath.replace("java", "kotlin")
     val srcKotlinDir = File(path)
 
+    bottomMenuTabList.forEach {
+        File("$path/$it").mkdir()
+    }
+
     /** ComposeActivity */
     save(
-        composeActivity(date, defaultPackage, activityName, moduleData),
+        composeActivity(date, defaultPackage, activityName, moduleData,bottomMenuTabList),
         srcKotlinDir.resolve("${activityName}.kt")
     )
 
