@@ -6,7 +6,8 @@ fun composeActivity(
     date: String,
     defaultPackage: String,
     activityName: String,
-    moduleData: ModuleTemplateData
+    moduleData: ModuleTemplateData,
+    bottomMenuTabList: String,
 ) = """
 package $defaultPackage
 import android.os.Bundle
@@ -25,6 +26,7 @@ class $activityName : ComponentActivity() {
         setContent {
             ${moduleData.themesData.appName}Theme {
                 WolfApp()
+                $bottomMenuTabList
             }
         }
     }
