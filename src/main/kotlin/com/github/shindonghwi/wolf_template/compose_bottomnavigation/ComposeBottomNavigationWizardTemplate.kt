@@ -17,8 +17,8 @@ val composeBottomNavigationWizardTemplate
 
         val packageNameParam = defaultPackageNameParameter // 템플릿 생성시 패키지 Default 옵션 설정
         val pathNameParam = pathNameParameter // 템플릿 생성시 파일경로 옵션 설정
-        val activityParam = activityName //
-        val bottomMenuTabListParam = bottomMenuTabList //
+        val activityParam = activityName // 생성될 Activity 이름 정보
+        val bottomMenuTabListParam = bottomMenuTabList // 바텀 메뉴 리스트 정보
 
         widgets(
             TextFieldWidget(packageNameParam),
