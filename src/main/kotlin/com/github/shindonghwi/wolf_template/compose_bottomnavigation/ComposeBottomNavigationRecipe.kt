@@ -6,6 +6,8 @@ import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.addAllKotlinDependencies
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.activity.composeActivity
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.app.wolfApp
+import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.model.menuDockBar
+import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.model.screenRouter
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.nav_graph.menuNavGraph
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.utils.CreateFilePackage
 import java.io.File
@@ -31,6 +33,7 @@ fun RecipeExecutor.composeBottomNavigationSetup(
     /** 패키지 생성 */
     CreateFilePackage.bottomMenuPackage(path = path, bottomMenuTabList = bottomMenuTabList)
     CreateFilePackage.navigationPackage(path = path)
+    CreateFilePackage.modelPackage(path = path)
 
     /** ComposeActivity */
     save(
@@ -52,7 +55,19 @@ fun RecipeExecutor.composeBottomNavigationSetup(
         )
     }
 
+    /** Model */
+    bottomMenuTabList.forEach { menuName ->
+        save(
+            screenRouter(menuName, defaultPackage),
+            srcKotlinDir.resolve("$path/model/screen_router/${menuName.toCamelCase()}ScreenRouter.kt")
+        )
+    }
 
+    /** DockBarItem */
+    save(
+        menuDockBar(bottomMenuTabList, defaultPackage),
+        srcKotlinDir.resolve("$path/model/DocBarItem.kt")
+    )
 
 
 //    save(
