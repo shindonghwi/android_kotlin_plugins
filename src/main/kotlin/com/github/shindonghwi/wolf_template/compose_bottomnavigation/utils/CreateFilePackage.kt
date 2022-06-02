@@ -13,7 +13,7 @@ object CreateFilePackage {
     }
 
     /** navigation package 생성 */
-    fun navigationPackage(path: String, bottomMenuTabList: List<String>) = runBlocking {
+    fun navigationPackage(path: String) = runBlocking {
         File("$path/navigation").mkdirs()
         File("$path/navigation/nav_graph").mkdirs()
     }

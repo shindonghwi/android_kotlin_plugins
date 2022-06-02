@@ -30,7 +30,7 @@ fun RecipeExecutor.composeBottomNavigationSetup(
 
     /** 패키지 생성 */
     CreateFilePackage.bottomMenuPackage(path = path, bottomMenuTabList = bottomMenuTabList)
-    CreateFilePackage.navigationPackage(path = path, bottomMenuTabList = bottomMenuTabList)
+    CreateFilePackage.navigationPackage(path = path)
 
     /** ComposeActivity */
     save(
