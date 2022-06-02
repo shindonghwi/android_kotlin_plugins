@@ -17,13 +17,29 @@ val composeBottomNavigationWizardTemplate
 
         val packageNameParam = defaultPackageNameParameter // 템플릿 생성시 패키지 Default 옵션 설정
         val pathNameParam = pathNameParameter // 템플릿 생성시 파일경로 옵션 설정
-        val activityParam = activityName // 생성될 Activity 이름 정보
-        val bottomMenuTabListParam = bottomMenuTabList // 바텀 메뉴 리스트 정보
+
+        /** 바텀 네비게이션 전환을 위한 액티비티 */
+        val activityParam = stringParameter {
+            name = "Activity Name"
+            visible = { !isNewModule }
+            default = "WolfComposeBottomNavigationActivity"
+            help = "Activity for bottom navigation movement"
+            constraints = listOf(Constraint.NONEMPTY)
+        }
+
+        /** 바텀 네비게이션 메뉴 셋팅 */
+        val bottomMenuTabListParam = stringParameter {
+            name = "BottomNavigation Item List [ Categorized by commas ] / ex) home,news,market,account"
+            visible = { !isNewModule }
+            default = "home,news,market,account"
+            help = "Set the bottom navigation menu"
+            constraints = listOf(Constraint.NONEMPTY)
+        }
 
         widgets(
             TextFieldWidget(packageNameParam),
-            TextFieldWidget(activityName),
-            TextFieldWidget(bottomMenuTabList),
+            TextFieldWidget(activityParam),
+            TextFieldWidget(bottomMenuTabListParam),
             PackageNameWidget(pathNameParam)
         )
 
@@ -33,7 +49,7 @@ val composeBottomNavigationWizardTemplate
                 packageNameParam.value,
                 pathNameParam.value,
                 activityParam.value,
-                bottomMenuTabListParam.value
+                bottomMenuTabListParam.value.split(",")
             )
         }
     }
@@ -56,22 +72,4 @@ val pathNameParameter
         default = "com.wolf.compose.presentation"
         constraints = listOf(Constraint.PACKAGE)
         suggest = { "$packageName.presentation" }
-    }
-
-/** 바텀 네비게이션 전환을 위한 액티비티 */
-val activityName
-    get() = stringParameter {
-        name = "Activity Name"
-        default = "WolfComposeBottomNavigationActivity"
-        help = "Activity for bottom navigation movement"
-        constraints = listOf(Constraint.NONEMPTY)
-    }
-
-/** 바텀 네비게이션 메뉴 셋팅 */
-val bottomMenuTabList
-    get() = stringParameter {
-        name = "BottomNavigation Item List [ Categorized by commas ] / ex) home,news,market,account"
-        default = "home,news,market,account"
-        help = "Set the bottom navigation menu"
-        constraints = listOf(Constraint.NONEMPTY)
     }
