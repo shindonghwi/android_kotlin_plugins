@@ -17,4 +17,9 @@ object CreateFilePackage {
         File("$path/navigation").mkdirs()
         File("$path/navigation/nav_graph").mkdirs()
     }
+
+    /** model package 생성 */
+    fun modelPackage(path: String) = runBlocking {
+        File("$path/model/screen_router").mkdirs()
+    }
 }
