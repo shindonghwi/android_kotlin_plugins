@@ -15,26 +15,10 @@ val composeBottomNavigationWizardTemplate
             WizardUiContext.NewProject, WizardUiContext.NewModule
         )
 
-        val packageNameParam = defaultPackageNameParameter // 템플릿 생성시 패키지 Default 옵션 설정
-        val pathNameParam = pathNameParameter // 템플릿 생성시 파일경로 옵션 설정
-
-        /** 바텀 네비게이션 전환을 위한 액티비티 */
-        val activityParam = stringParameter {
-            name = "Activity Name"
-            visible = { !isNewModule }
-            default = "WolfComposeBottomNavigationActivity"
-            help = "Activity for bottom navigation movement"
-            constraints = listOf(Constraint.NONEMPTY)
-        }
-
-        /** 바텀 네비게이션 메뉴 셋팅 */
-        val bottomMenuTabListParam = stringParameter {
-            name = "BottomNavigation Item List [ Categorized by commas ] / ex) home,news,market,account"
-            visible = { !isNewModule }
-            default = "home,news,market,account"
-            help = "Set the bottom navigation menu"
-            constraints = listOf(Constraint.NONEMPTY)
-        }
+        val packageNameParam = getDefaultPackageNameParam() // 템플릿 생성시 패키지 Default 옵션 설정
+        val pathNameParam = getPathNameParameter() // 템플릿 생성시 파일경로 옵션 설정
+        val activityParam = getActivityParam() // 바텀 네비게이션 전환을 위한 액티비티
+        val bottomMenuTabListParam = getBottomMenuTabListParam() // 바텀 네비게이션 메뉴 셋팅
 
         widgets(
             TextFieldWidget(packageNameParam),
@@ -55,21 +39,37 @@ val composeBottomNavigationWizardTemplate
     }
 
 /** 패키지명 기본 옵션 설정 */
-val defaultPackageNameParameter
-    get() = stringParameter {
-        name = "Default Package"
-        visible = { !isNewModule }
-        default = "com.wolf.compose"
-        constraints = listOf(Constraint.PACKAGE)
-        suggest = { packageName }
-    }
+fun getDefaultPackageNameParam() = stringParameter {
+    name = "Default Package"
+    visible = { !isNewModule }
+    default = "com.wolf.compose"
+    constraints = listOf(Constraint.PACKAGE)
+    suggest = { packageName }
+}
 
 /** 파일 Path 기본 옵션 설정 */
-val pathNameParameter
-    get() = stringParameter {
-        name = "New File Location"
-        visible = { !isNewModule }
-        default = "com.wolf.compose.presentation"
-        constraints = listOf(Constraint.PACKAGE)
-        suggest = { "$packageName.presentation" }
-    }
+fun getPathNameParameter() = stringParameter {
+    name = "New File Location"
+    visible = { !isNewModule }
+    default = "com.wolf.compose.presentation"
+    constraints = listOf(Constraint.PACKAGE)
+    suggest = { "$packageName.presentation" }
+}
+
+/** 바텀 네비게이션 전환을 위한 액티비티 */
+fun getActivityParam() = stringParameter {
+    name = "Activity Name"
+    visible = { !isNewModule }
+    default = "WolfComposeBottomNavigationActivity"
+    help = "Activity for bottom navigation movement"
+    constraints = listOf(Constraint.NONEMPTY)
+}
+
+/** 바텀 네비게이션 메뉴 셋팅 */
+fun getBottomMenuTabListParam() = stringParameter {
+    name = "BottomNavigation Item List [ Categorized by commas ] / ex) home,news,market,account"
+    visible = { !isNewModule }
+    default = "home,news,market,account"
+    help = "Set the bottom navigation menu"
+    constraints = listOf(Constraint.NONEMPTY)
+}
