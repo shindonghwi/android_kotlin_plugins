@@ -1,4 +1,4 @@
-package com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources
+package com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.app
 
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 
