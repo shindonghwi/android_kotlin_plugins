@@ -7,7 +7,7 @@ fun composeActivity(
     defaultPackage: String,
     activityName: String,
     moduleData: ModuleTemplateData,
-    bottomMenuTabList: String,
+    bottomMenuTabList: List<String>,
 ) = """
 package $defaultPackage
 import android.os.Bundle

@@ -14,7 +14,7 @@ fun RecipeExecutor.composeBottomNavigationSetup(
     defaultPackage: String,
     newFilePackage: String,
     activityName: String,
-    bottomMenuTabList: String
+    bottomMenuTabList: List<String>
 ) {
     val (projectData, srcOut, resOut) = moduleData
 
@@ -25,13 +25,14 @@ fun RecipeExecutor.composeBottomNavigationSetup(
     val path = srcOut.absolutePath.replace("java", "kotlin")
     val srcKotlinDir = File(path)
 
+    /** 패키지 생성 */
     bottomMenuTabList.forEach {
-        File("$path/$it").mkdir()
+        File("$path/$it").mkdirs()
     }
 
     /** ComposeActivity */
     save(
-        composeActivity(date, defaultPackage, activityName, moduleData,bottomMenuTabList),
+        composeActivity(date, defaultPackage, activityName, moduleData, bottomMenuTabList),
         srcKotlinDir.resolve("${activityName}.kt")
     )
 
