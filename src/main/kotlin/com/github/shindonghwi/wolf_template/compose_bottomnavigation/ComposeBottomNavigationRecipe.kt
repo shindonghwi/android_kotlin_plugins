@@ -1,10 +1,12 @@
 package com.github.shindonghwi.wolf_template.compose_bottomnavigation
 
+import android.databinding.tool.ext.toCamelCase
 import com.android.tools.idea.wizard.template.ModuleTemplateData
 import com.android.tools.idea.wizard.template.RecipeExecutor
 import com.android.tools.idea.wizard.template.impl.activities.common.addAllKotlinDependencies
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.activity.composeActivity
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.app.wolfApp
+import com.github.shindonghwi.wolf_template.compose_bottomnavigation.sources.nav_graph.menuNavGraph
 import com.github.shindonghwi.wolf_template.compose_bottomnavigation.utils.CreateFilePackage
 import java.io.File
 import java.text.SimpleDateFormat
@@ -41,6 +43,15 @@ fun RecipeExecutor.composeBottomNavigationSetup(
         wolfApp(date, defaultPackage, moduleData),
         srcKotlinDir.resolve("WolfApp.kt")
     )
+
+    /** NavGraph */
+    bottomMenuTabList.forEach { menuName ->
+        save(
+            menuNavGraph(menuName, defaultPackage),
+            srcKotlinDir.resolve("$path/navigation/nav_graph/${menuName.toCamelCase()}NavGraph.kt")
+        )
+    }
+
 
 
 
